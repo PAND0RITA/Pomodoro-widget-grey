@@ -4,63 +4,58 @@
 
 body {
   font-family: 'Roboto Mono', monospace;
-  background-color: #ffffff; /* Fondo blanco */
-  margin: 0;
-  padding: 0;
+ // background-color: #c2e6e8;
 }
 
 #root {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh; /* Ocupa toda la altura de la ventana */
 }
-
-/* Botones */
 
 button,
 button:active {
-  background-color: #d0d0d0; /* Gris claro */
+  background-color: rgb(234,178,156);
   border: none;
-  width: 30px; /* Tamaño reducido */
-  height: 30px; /* Tamaño reducido */
-  border-radius: 50%; /* Forma circular */
+  width: 42px;
+  height: 40px;
+  border-radius: 100%;
   text-align: center;
-  box-shadow: 0.1em 0.1em #a0a0a0; /* Gris oscuro para la sombra */
-  -webkit-box-shadow: 0.1em 0.1em #a0a0a0;
-  -moz-box-shadow: 0.1em 0.1em #a0a0a0;
+  box-shadow: 0.2em 0.2em rgb(194, 91, 44);
+  -webkit-box-shadow: 0.2em 0.2em rgb(194, 91, 44);
+  -moz-box-shadow: 0.2em 0.2em rgb(194, 91, 44);
 }
 
 button:focus {
-  translate: 0.1em 0.1em;
-  box-shadow: 0.1em 0.1em #a0a0a0 inset;
-  -webkit-box-shadow: 0.1em 0.1em #a0a0a0 inset;
-  -moz-box-shadow: 0.1em 0.1em #a0a0a0 inset;
+  translate: 0.2em 0.2em;
+  box-shadow: 0.2em 0.2em rgb(194, 91, 44) inset;
+  -webkit-box-shadow: 0.2em 0.2em rgb(194, 91, 44) inset;
+  -moz-box-shadow: 0.2em 0.2em rgb(194, 91, 44) inset;
 }
 
-/* Cuerpo del reloj */
+/* Clock Body */
 
 .clock-container {
-  width: 200px; /* Tamaño reducido */
-  border-radius: 10px; /* Borde redondeado más pequeño */
-  padding: 20px; /* Tamaño reducido del padding */
-  box-shadow: 5px 5px #b0b0b0; /* Gris medio para la sombra */
-  background-color: #ffffff; /* Fondo blanco */
+  background-color: rgb(240, 240, 190); 
+  width: 350px;
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 10px 10px sienna;
 }
 
-/* Mostrar + Controles de Inicio/Parar/Resetear */
+/* Display + Stop/Start/Reset Controls */
 
 #time-left {
-  font-size: 50px; /* Tamaño de fuente reducido */
+  font-size: 70px;
   text-align: center;
-  padding: 10px; /* Tamaño reducido del padding */
-  border-radius: 10px; /* Borde redondeado más pequeño */
-  box-shadow: 2px 2px #b0b0b0 inset; /* Gris medio para la sombra interna */
-  background-color: #f0f0f0; /* Gris muy claro para el fondo del temporizador */
+  background-color: rgb(150,180,175);
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 3px 3px rgb(121, 145, 141) inset;
 }
 
 #display-controls {
-  margin: 5px 0; /* Tamaño reducido del margen */
+  margin: 10px 0;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -68,27 +63,28 @@ button:focus {
 }
 
 #timer-label {
-  font-size: 18px; /* Tamaño de fuente reducido */
+  font-size: 25px;
   text-align: center;
   padding-top: 2px;
-  border-radius: 5px; /* Borde redondeado más pequeño */
-  height: 30px; /* Tamaño reducido */
+  background-color: rgb(150,180,175);
+  border-radius: 10px;
+  height: 40px;
   flex: 2;
-  box-shadow: 2px 2px #b0b0b0 inset; /* Gris medio para la sombra interna */
-  background-color: #f0f0f0; /* Gris muy claro para el fondo del label */
+  box-shadow: 3px 3px rgb(121, 145, 141) inset;
 }
 
 #timer-ssr {
   flex: 1;
-  margin-left: 20px; /* Tamaño reducido del margen */
+  margin-left: 30px;
   display: flex;
   justify-content: space-between;
+  flex-start: end;
 }
 
-/* Controles de longitud del temporizador */
+/* Timer Length Controls */
 
 .length-container {
-  margin-top: 10px; /* Tamaño reducido del margen */
+  margin-top: 20px;
   display: flex;
   flex-direction: row;
 }
@@ -98,25 +94,25 @@ button:focus {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  width: 100px; /* Tamaño reducido */
-  height: 40px; /* Tamaño reducido */
+  width: 140px;
+  height:60px;
 }
 
 .break-container, 
 .session-container {
   text-align: center;
-  border: 2px solid #b0b0b0; /* Gris medio para los bordes */
-  padding: 5px; /* Tamaño reducido del padding */
-  border-radius: 5px; /* Borde redondeado más pequeño */
-  width: 45%; /* Tamaño reducido */
-  background-color: #ffffff; /* Fondo blanco */
+/*   display: inline-block; */
+  border: 2px solid rgb(234,178,156);
+  padding: 10px;
+  border-radius: 10px;
+  width: 48%;
 }
 
 .timer-length {
-  font-size: 1.5em; /* Tamaño de fuente reducido */
+  font-size: 2em;
 }
 
 .break-container,
 .inc-arrow {
-  margin-right: 8px; /* Tamaño reducido del margen */
+  margin-right: 12px;
 }
