@@ -1,8 +1,8 @@
 import React from "https://cdn.skypack.dev/react@17.0.1";
 import ReactDOM from "https://cdn.skypack.dev/react-dom@17.0.1";
 
-const SESSION = "Sessão";
-const BREAK = "Intervalo";
+const SESSION = "Session";
+const BREAK = "Break";
 const SESSIONLEN = 25;
 const BREAKLEN = 5;
 
@@ -164,7 +164,7 @@ class App extends React.Component {
       React.createElement("div", { className: "break-container" }, /*#__PURE__*/
       React.createElement(SetTimerLength, {
         timerLabelId: "break-label",
-        timerLabel: "Tempo de intervalo",
+        timerLabel: "Break Length",
         timerLen: this.state.breakLen,
         timerLenId: "break-length",
         decTimerId: "break-decrement",
@@ -176,7 +176,7 @@ class App extends React.Component {
       React.createElement("div", { className: "session-container" }, /*#__PURE__*/
       React.createElement(SetTimerLength, {
         timerLabelId: "session-label",
-        timerLabel: "Tempo de sess\xE3o",
+        timerLabel: "Session Length",
         timerLen: this.state.sessionLen,
         timerLenId: "session-length",
         decTimerId: "session-decrement",
