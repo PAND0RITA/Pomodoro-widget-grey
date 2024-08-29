@@ -1,56 +1,69 @@
 body {
+    font-family: Arial, sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #f7f7f7;
-    font-family: Arial, sans-serif;
     margin: 0;
+    background-color: #f0f0f0;
 }
 
 .pomodoro-container {
-    text-align: center;
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.mode-buttons {
+.timer-modes {
+    display: flex;
+    justify-content: space-between;
     margin-bottom: 20px;
 }
 
-.mode-button {
-    padding: 10px 20px;
-    border: 2px solid black;
+.mode-btn {
     background-color: transparent;
+    border: none;
+    padding: 10px 15px;
     border-radius: 20px;
-    font-size: 16px;
     cursor: pointer;
-    margin: 0 5px;
+    transition: background-color 0.3s;
 }
 
-.mode-button.active {
+.mode-btn.active {
     background-color: black;
     color: white;
 }
 
 .timer-display {
-    font-size: 80px;
-    margin: 20px 0;
+    font-size: 72px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
 }
 
-.control-buttons {
-    margin-top: 20px;
+.timer-controls {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
 }
 
-.control-button {
-    padding: 10px 20px;
-    font-size: 16px;
-    border: none;
-    border-radius: 20px;
+.control-btn {
     background-color: black;
     color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
     cursor: pointer;
-    margin: 0 10px;
+    font-size: 16px;
 }
 
-.control-button:hover {
-    background-color: #333;
+#resetBtn, #settingsBtn {
+    background-color: #e0e0e0;
+    color: black;
+}
+
+.control-btn svg {
+    width: 20px;
+    height: 20px;
 }
