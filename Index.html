@@ -1,28 +1,35 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reloj Pomodoro</title>
+    <title>Pomodoro Timer</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="pomodoro-container">
-        <div class="mode-buttons">
-            <button id="pomodoro" class="mode-button active">Pomodoro</button>
-            <button id="short-break" class="mode-button">Short Break</button>
-            <button id="long-break" class="mode-button">Long Break</button>
+        <div class="timer-modes">
+            <button class="mode-btn active" id="pomodoro">Pomodoro</button>
+            <button class="mode-btn" id="shortBreak">Short Break</button>
+            <button class="mode-btn" id="longBreak">Long Break</button>
         </div>
-        <div class="timer-display">
-            <span id="minutes">25</span>:<span id="seconds">00</span>
-        </div>
-        <div class="control-buttons">
-            <button id="start-stop" class="control-button">Start</button>
-            <button id="reset" class="control-button">Reset</button>
+        <div class="timer-display">25:00</div>
+        <div class="timer-controls">
+            <button class="control-btn" id="startBtn">Start</button>
+            <button class="control-btn" id="resetBtn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 2v6h6"></path>
+                    <path d="M3 13a9 9 0 1 0 3-7.7L3 8"></path>
+                </svg>
+            </button>
+            <button class="control-btn" id="settingsBtn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="3"></circle>
+                    <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                </svg>
+            </button>
         </div>
     </div>
-    <audio id="alarm-sound" src="alarm.mp3" preload="auto"></audio>
     <script src="script.js"></script>
 </body>
 </html>
