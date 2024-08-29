@@ -86,7 +86,7 @@ button:focus {
 /* Timer Length Controls */
 
 .length-container {
-  margin-top: 10px; /* Further reduced margin */
+  margin-top: 7px; /* Further reduced margin */
   display: flex;
   flex-direction: row;
 }
