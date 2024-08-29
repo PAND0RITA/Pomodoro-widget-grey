@@ -3,60 +3,61 @@
 /* General */
 
 body {
-  font-family: 'Sans serif', ;
-  background-color: #D1C4E9; color: #D1C4E9
+  font-family: 'Roboto Mono', monospace;
+  /* background-color: #c2e6e8; */
 }
 
 #root {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
 }
+
+/* Buttons */
 
 button,
 button:active {
-  background-color: rgb (209, 196, 233);
+  background-color: rgb(234,178,156);
   border: none;
-  width: 42px;
-  height: 40px;
+  width: 32px; /* Reduced width */
+  height: 30px; /* Reduced height */
   border-radius: 100%;
   text-align: center;
-  box-shadow: 0.2em 0.2em rgb(209, 196, 233); 
-  -webkit-box-shadow: 0.2em 0.2em rgb(209, 196, 233); 
-  -moz-box-shadow: 0.2em 0.2em rgb(209, 196, 233);
+  box-shadow: 0.15em 0.15em rgb(194, 91, 44); /* Reduced shadow */
+  -webkit-box-shadow: 0.15em 0.15em rgb(194, 91, 44);
+  -moz-box-shadow: 0.15em 0.15em rgb(194, 91, 44);
 }
 
 button:focus {
-  translate: 0.2em 0.2em;
-  box-shadow: 0.2em 0.2em rgb(209, 196, 233) inset;
-  -webkit-box-shadow: 0.2em 0.2em rgb(209, 196, 233) inset;
-  -moz-box-shadow: 0.2em 0.2em rgb(209, 196, 233) inset;
+  translate: 0.15em 0.15em;
+  box-shadow: 0.15em 0.15em rgb(194, 91, 44) inset;
+  -webkit-box-shadow: 0.15em 0.15em rgb(194, 91, 44) inset;
+  -moz-box-shadow: 0.15em 0.15em rgb(194, 91, 44) inset;
 }
 
 /* Clock Body */
 
 .clock-container {
-  background-color: rgb(255,255,255); 
-  width: 350px;
-  border-radius: 20px;
-  padding: 30px;
-  box-shadow: 10px 10px lilás;
+  background-color: rgb(240, 240, 190); 
+  width: 280px; /* Reduced width */
+  border-radius: 15px; /* Reduced border-radius */
+  padding: 20px; /* Reduced padding */
+  box-shadow: 7px 7px sienna; /* Reduced shadow */
 }
 
 /* Display + Stop/Start/Reset Controls */
 
 #time-left {
-  font-size: 70px;
+  font-size: 50px; /* Reduced font size */
   text-align: center;
-  background-color: rgb(255,255,255);
-  padding: 20px;
-  border-radius: 20px;
-  box-shadow: 3px 3px rgb(209, 196, 233) inset;
+  background-color: rgb(150,180,175);
+  padding: 15px; /* Reduced padding */
+  border-radius: 15px; /* Reduced border-radius */
+  box-shadow: 2px 2px rgb(121, 145, 141) inset; /* Reduced shadow */
 }
 
 #display-controls {
-  margin: 10px 0;
+  margin: 8px 0; /* Reduced margin */
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -64,19 +65,19 @@ button:focus {
 }
 
 #timer-label {
-  font-size: 27px; color: #EDECE9;
+  font-size: 20px; /* Reduced font size */
   text-align: center;
-  padding-top: 10px;
-  background-color: rgb(209, 196, 233);
-  border-radius: 10px;
-  height: 40px;
+  padding-top: 2px;
+  background-color: rgb(150,180,175);
+  border-radius: 8px; /* Reduced border-radius */
+  height: 30px; /* Reduced height */
   flex: 2;
-  box-shadow: 3px 3px rgb() inset;
+  box-shadow: 2px 2px rgb(121, 145, 141) inset; /* Reduced shadow */
 }
 
 #timer-ssr {
   flex: 1;
-  margin-left: 30px;
+  margin-left: 20px; /* Reduced margin */
   display: flex;
   justify-content: space-between;
   flex-start: end;
@@ -85,7 +86,7 @@ button:focus {
 /* Timer Length Controls */
 
 .length-container {
-  margin-top: 20px;
+  margin-top: 15px; /* Reduced margin */
   display: flex;
   flex-direction: row;
 }
@@ -95,25 +96,24 @@ button:focus {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  width: 140px;
-  height: 60px;
+  width: 120px; /* Reduced width */
+  height: 50px; /* Reduced height */
 }
 
 .break-container, 
 .session-container {
-  text-align: center; 
-/*   display: inline-block; */
-  border: 2px solid rgb(209, 196, 233);
-  padding: 10px;
-  border-radius: 10px;
-  width: 50%;
+  text-align: center;
+  border: 2px solid rgb(234,178,156);
+  padding: 8px; /* Reduced padding */
+  border-radius: 8px; /* Reduced border-radius */
+  width: 45%; /* Reduced width */
 }
 
 .timer-length {
-  font-size: 2em;
+  font-size: 1.5em; /* Reduced font size */
 }
 
 .break-container,
 .inc-arrow {
-  margin-right: 12px;
+  margin-right: 8px; /* Reduced margin */
 }
