@@ -13,39 +13,42 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh; /* Asegura que el contenedor principal ocupe toda la altura */
+  height: 100vh; /* Ocupa toda la altura de la ventana */
 }
+
+/* Botones */
 
 button,
 button:active {
-  background-color: #b0b0b0; /* Gris medio para los botones */
+  background-color: #d0d0d0; /* Gris claro */
   border: none;
   width: 30px; /* Tamaño reducido */
   height: 30px; /* Tamaño reducido */
   border-radius: 50%; /* Forma circular */
   text-align: center;
-  box-shadow: 0.1em 0.1em #8c8c8c; /* Gris oscuro para la sombra */
-  -webkit-box-shadow: 0.1em 0.1em #8c8c8c;
-  -moz-box-shadow: 0.1em 0.1em #8c8c8c;
+  box-shadow: 0.1em 0.1em #a0a0a0; /* Gris oscuro para la sombra */
+  -webkit-box-shadow: 0.1em 0.1em #a0a0a0;
+  -moz-box-shadow: 0.1em 0.1em #a0a0a0;
 }
 
 button:focus {
   translate: 0.1em 0.1em;
-  box-shadow: 0.1em 0.1em #8c8c8c inset;
-  -webkit-box-shadow: 0.1em 0.1em #8c8c8c inset;
-  -moz-box-shadow: 0.1em 0.1em #8c8c8c inset;
+  box-shadow: 0.1em 0.1em #a0a0a0 inset;
+  -webkit-box-shadow: 0.1em 0.1em #a0a0a0 inset;
+  -moz-box-shadow: 0.1em 0.1em #a0a0a0 inset;
 }
 
-/* Clock Body */
+/* Cuerpo del reloj */
 
 .clock-container {
-  width: 250px; /* Tamaño reducido */
+  width: 200px; /* Tamaño reducido */
   border-radius: 10px; /* Borde redondeado más pequeño */
   padding: 20px; /* Tamaño reducido del padding */
   box-shadow: 5px 5px #b0b0b0; /* Gris medio para la sombra */
+  background-color: #ffffff; /* Fondo blanco */
 }
 
-/* Display + Stop/Start/Reset Controls */
+/* Mostrar + Controles de Inicio/Parar/Resetear */
 
 #time-left {
   font-size: 50px; /* Tamaño de fuente reducido */
@@ -53,6 +56,7 @@ button:focus {
   padding: 10px; /* Tamaño reducido del padding */
   border-radius: 10px; /* Borde redondeado más pequeño */
   box-shadow: 2px 2px #b0b0b0 inset; /* Gris medio para la sombra interna */
+  background-color: #f0f0f0; /* Gris muy claro para el fondo del temporizador */
 }
 
 #display-controls {
@@ -71,6 +75,7 @@ button:focus {
   height: 30px; /* Tamaño reducido */
   flex: 2;
   box-shadow: 2px 2px #b0b0b0 inset; /* Gris medio para la sombra interna */
+  background-color: #f0f0f0; /* Gris muy claro para el fondo del label */
 }
 
 #timer-ssr {
@@ -78,10 +83,9 @@ button:focus {
   margin-left: 20px; /* Tamaño reducido del margen */
   display: flex;
   justify-content: space-between;
-  flex-start: end;
 }
 
-/* Timer Length Controls */
+/* Controles de longitud del temporizador */
 
 .length-container {
   margin-top: 10px; /* Tamaño reducido del margen */
@@ -105,6 +109,7 @@ button:focus {
   padding: 5px; /* Tamaño reducido del padding */
   border-radius: 5px; /* Borde redondeado más pequeño */
   width: 45%; /* Tamaño reducido */
+  background-color: #ffffff; /* Fondo blanco */
 }
 
 .timer-length {
