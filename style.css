@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@600&display=swap');
+
+/* General */
+
+body {
+  font-family: 'Roboto Mono', monospace;
+  background-color: #f5f5f5; /* Gris claro de fondo */
+}
+
+#root {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+button,
+button:active {
+  background-color: #b0b0b0; /* Gris medio para los botones */
+  border: none;
+  width: 42px;
+  height: 40px;
+  border-radius: 100%;
+  text-align: center;
+  box-shadow: 0.2em 0.2em #8c8c8c; /* Gris oscuro para la sombra */
+  -webkit-box-shadow: 0.2em 0.2em #8c8c8c;
+  -moz-box-shadow: 0.2em 0.2em #8c8c8c;
+}
+
+button:focus {
+  translate: 0.2em 0.2em;
+  box-shadow: 0.2em 0.2em #8c8c8c inset;
+  -webkit-box-shadow: 0.2em 0.2em #8c8c8c inset;
+  -moz-box-shadow: 0.2em 0.2em #8c8c8c inset;
+}
+
+/* Clock Body */
+
+.clock-container {
+  background-color: #e0e0e0; /* Gris claro para el fondo del reloj */
+  width: 350px;
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 10px 10px #b0b0b0; /* Gris medio para la sombra */
+}
+
+/* Display + Stop/Start/Reset Controls */
+
+#time-left {
+  font-size: 70px;
+  text-align: center;
+  background-color: #d0d0d0; /* Gris más claro para el fondo del tiempo */
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 3px 3px #b0b0b0 inset; /* Gris medio para la sombra interna */
+}
+
+#display-controls {
+  margin: 10px 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#timer-label {
+  font-size: 25px;
+  text-align: center;
+  padding-top: 2px;
+  background-color: #d0d0d0; /* Gris más claro para el fondo del label */
+  border-radius: 10px;
+  height: 40px;
+  flex: 2;
+  box-shadow: 3px 3px #b0b0b0 inset; /* Gris medio para la sombra interna */
+}
+
+#timer-ssr {
+  flex: 1;
+  margin-left: 30px;
+  display: flex;
+  justify-content: space-between;
+  flex-start: end;
+}
+
+/* Timer Length Controls */
+
+.length-container {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+}
+
+.inc-dec-btn-container {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 140px;
+  height:60px;
+}
+
+.break-container, 
+.session-container {
+  text-align: center;
+  border: 2px solid #b0b0b0; /* Gris medio para los bordes */
+  padding: 10px;
+  border-radius: 10px;
+  width: 48%;
+  background-color: #e0e0e0; /* Gris claro para el fondo de los contenedores */
+}
+
+.timer-length {
+  font-size: 2em;
+}
+
+.break-container,
+.inc-arrow {
+  margin-right: 12px;
+}
