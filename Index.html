@@ -1,35 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pomodoro Timer</title>
+    <title>Temporizador Pomodoro - Estilo Notion</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="pomodoro-container">
-        <div class="timer-modes">
-            <button class="mode-btn active" id="pomodoro">Pomodoro</button>
-            <button class="mode-btn" id="shortBreak">Short Break</button>
-            <button class="mode-btn" id="longBreak">Long Break</button>
+    <div class="container">
+        <div class="mode-buttons">
+            <button class="mode-button active" onclick="setMode('pomodoro')">Pomodoro</button>
+            <button class="mode-button" onclick="setMode('shortBreak')">Descanso Corto</button>
+            <button class="mode-button" onclick="setMode('longBreak')">Descanso Largo</button>
         </div>
-        <div class="timer-display">25:00</div>
-        <div class="timer-controls">
-            <button class="control-btn" id="startBtn">Start</button>
-            <button class="control-btn" id="resetBtn">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M3 2v6h6"></path>
-                    <path d="M3 13a9 9 0 1 0 3-7.7L3 8"></path>
-                </svg>
-            </button>
-            <button class="control-btn" id="settingsBtn">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="12" cy="12" r="3"></circle>
-                    <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
-                </svg>
-            </button>
+        <div class="timer" id="timer">25:00</div>
+        <div class="control-buttons">
+            <button class="control-button" onclick="startTimer()">Iniciar</button>
+            <button class="control-button" onclick="resetTimer()">Restablecer</button>
         </div>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>
