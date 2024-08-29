@@ -1,108 +1,121 @@
-document.addEventListener('DOMContentLoaded', () => {
-  let timer;
-  let isRunning = false;
-  let isSession = true;
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap');
 
-  const timeLeft = document.getElementById('time-left');
-  const breakLength = document.getElementById('break-length');
-  const sessionLength = document.getElementById('session-length');
-  const timerLabel = document.getElementById('timer-label');
-  const startStopButton = document.getElementById('start-stop');
-  const resetButton = document.getElementById('reset');
+/* General */
 
-  let breakTime = parseInt(breakLength.textContent) * 60;
-  let sessionTime = parseInt(sessionLength.textContent) * 60;
-  let timeRemaining = sessionTime;
+body {
+  font-family: 'Lora', serif;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+}
 
-  function updateDisplay() {
-    const minutes = Math.floor(timeRemaining / 60);
-    const seconds = timeRemaining % 60;
-    timeLeft.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
-  }
+#root {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-  function startTimer() {
-    timer = setInterval(() => {
-      timeRemaining -= 1;
-      if (timeRemaining < 0) {
-        if (isSession) {
-          timeRemaining = breakTime;
-          timerLabel.textContent = 'Break';
-        } else {
-          timeRemaining = sessionTime;
-          timerLabel.textContent = 'Session';
-        }
-        isSession = !isSession;
-      }
-      updateDisplay();
-    }, 1000);
-  }
+.clock-container {
+  background-color: #f4f4f4;
+  width: 300px;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
 
-  function stopTimer() {
-    clearInterval(timer);
-  }
+#time-left {
+  font-size: 48px;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1) inset;
+  margin-bottom: 20px;
+}
 
-  function resetTimer() {
-    stopTimer();
-    isSession = true;
-    timerLabel.textContent = 'Session';
-    timeRemaining = sessionTime;
-    updateDisplay();
-    startStopButton.textContent = 'Start';
-    isRunning = false;
-  }
+#display-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
 
-  document.getElementById('break-increment').addEventListener('click', () => {
-    breakTime += 60;
-    breakLength.textContent = breakTime / 60;
-    if (!isSession) {
-      timeRemaining = breakTime;
-      updateDisplay();
-    }
-  });
+#timer-label {
+  font-size: 20px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  height: 30px;
+  line-height: 30px;
+  padding-top: 5px;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1) inset;
+  margin-bottom: 10px;
+}
 
-  document.getElementById('break-decrement').addEventListener('click', () => {
-    if (breakTime > 60) {
-      breakTime -= 60;
-      breakLength.textContent = breakTime / 60;
-      if (!isSession) {
-        timeRemaining = breakTime;
-        updateDisplay();
-      }
-    }
-  });
+#timer-ssr {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
 
-  document.getElementById('session-increment').addEventListener('click', () => {
-    sessionTime += 60;
-    sessionLength.textContent = sessionTime / 60;
-    if (isSession) {
-      timeRemaining = sessionTime;
-      updateDisplay();
-    }
-  });
+button {
+  background-color: #e0e0e0;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  text-align: center;
+  font-size: 16px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
 
-  document.getElementById('session-decrement').addEventListener('click', () => {
-    if (sessionTime > 60) {
-      sessionTime -= 60;
-      sessionLength.textContent = sessionTime / 60;
-      if (isSession) {
-        timeRemaining = sessionTime;
-        updateDisplay();
-      }
-    }
-  });
+button:active {
+  background-color: #d0d0d0;
+}
 
-  startStopButton.addEventListener('click', () => {
-    if (isRunning) {
-      stopTimer();
-      startStopButton.textContent = 'Start';
-    } else {
-      startTimer();
-      startStopButton.textContent = 'Stop';
-    }
-    isRunning = !isRunning;
-  });
+button:focus {
+  outline: none;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2) inset;
+}
 
-  resetButton.addEventListener('click', resetTimer);
+.length-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
 
-  updateDisplay();
-});
+.break-container,
+.session-container {
+  text-align: center;
+  border: 1px solid #d0d0d0;
+  padding: 10px;
+  border-radius: 10px;
+  width: 45%;
+  background-color: #ffffff;
+}
+
+.length-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.length-controls button {
+  width: 30px;
+  height: 30px;
+  font-size: 14px;
+}
+
+.length-controls span {
+  font-size: 20px;
+}
+
+#break-label,
+#session-label {
+  font-size: 16px;
+}
