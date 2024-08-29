@@ -1,124 +1,108 @@
-@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap');
+document.addEventListener('DOMContentLoaded', () => {
+  let timer;
+  let isRunning = false;
+  let isSession = true;
 
-/* General */
+  const timeLeft = document.getElementById('time-left');
+  const breakLength = document.getElementById('break-length');
+  const sessionLength = document.getElementById('session-length');
+  const timerLabel = document.getElementById('timer-label');
+  const startStopButton = document.getElementById('start-stop');
+  const resetButton = document.getElementById('reset');
 
-body {
-  font-family: 'Lora', serif;
-  background-color: #ffffff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  margin: 0;
-}
+  let breakTime = parseInt(breakLength.textContent) * 60;
+  let sessionTime = parseInt(sessionLength.textContent) * 60;
+  let timeRemaining = sessionTime;
 
-#root {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+  function updateDisplay() {
+    const minutes = Math.floor(timeRemaining / 60);
+    const seconds = timeRemaining % 60;
+    timeLeft.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+  }
 
-button {
-  background-color: #e0e0e0;
-  border: none;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  text-align: center;
-  font-size: 16px;
-  box-shadow: 0.1em 0.1em rgba(0, 0, 0, 0.2);
-  cursor: pointer;
-  transition: background-color 0.3s, box-shadow 0.3s;
-}
+  function startTimer() {
+    timer = setInterval(() => {
+      timeRemaining -= 1;
+      if (timeRemaining < 0) {
+        if (isSession) {
+          timeRemaining = breakTime;
+          timerLabel.textContent = 'Break';
+        } else {
+          timeRemaining = sessionTime;
+          timerLabel.textContent = 'Session';
+        }
+        isSession = !isSession;
+      }
+      updateDisplay();
+    }, 1000);
+  }
 
-button:active {
-  background-color: #d0d0d0;
-}
+  function stopTimer() {
+    clearInterval(timer);
+  }
 
-button:focus {
-  outline: none;
-  box-shadow: 0.1em 0.1em rgba(0, 0, 0, 0.3) inset;
-}
+  function resetTimer() {
+    stopTimer();
+    isSession = true;
+    timerLabel.textContent = 'Session';
+    timeRemaining = sessionTime;
+    updateDisplay();
+    startStopButton.textContent = 'Start';
+    isRunning = false;
+  }
 
-/* Clock Body */
+  document.getElementById('break-increment').addEventListener('click', () => {
+    breakTime += 60;
+    breakLength.textContent = breakTime / 60;
+    if (!isSession) {
+      timeRemaining = breakTime;
+      updateDisplay();
+    }
+  });
 
-.clock-container {
-  background-color: #f9f9f9;
-  width: 250px;
-  border-radius: 15px;
-  padding: 20px;
-  box-shadow: 5px 5px rgba(0, 0, 0, 0.2);
-  text-align: center;
-}
+  document.getElementById('break-decrement').addEventListener('click', () => {
+    if (breakTime > 60) {
+      breakTime -= 60;
+      breakLength.textContent = breakTime / 60;
+      if (!isSession) {
+        timeRemaining = breakTime;
+        updateDisplay();
+      }
+    }
+  });
 
-#time-left {
-  font-size: 48px;
-  background-color: #ffffff;
-  padding: 15px;
-  border-radius: 15px;
-  box-shadow: 2px 2px rgba(0, 0, 0, 0.1) inset;
-}
+  document.getElementById('session-increment').addEventListener('click', () => {
+    sessionTime += 60;
+    sessionLength.textContent = sessionTime / 60;
+    if (isSession) {
+      timeRemaining = sessionTime;
+      updateDisplay();
+    }
+  });
 
-#display-controls {
-  margin: 15px 0;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-}
+  document.getElementById('session-decrement').addEventListener('click', () => {
+    if (sessionTime > 60) {
+      sessionTime -= 60;
+      sessionLength.textContent = sessionTime / 60;
+      if (isSession) {
+        timeRemaining = sessionTime;
+        updateDisplay();
+      }
+    }
+  });
 
-#timer-label {
-  font-size: 20px;
-  background-color: #ffffff;
-  border-radius: 10px;
-  height: 30px;
-  line-height: 30px;
-  padding-top: 5px;
-  box-shadow: 1px 1px rgba(0, 0, 0, 0.1) inset;
-}
+  startStopButton.addEventListener('click', () => {
+    if (isRunning) {
+      stopTimer();
+      startStopButton.textContent = 'Start';
+    } else {
+      startTimer();
+      startStopButton.textContent = 'Stop';
+    }
+    isRunning = !isRunning;
+  });
 
-#timer-ssr {
-  display: flex;
-  justify-content: space-between;
-}
+  resetButton.addEventListener('click', resetTimer);
 
-.length-container {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 15px;
-}
-
-.break-container, 
-.session-container {
-  text-align: center;
-  border: 1px solid #d0d0d0;
-  padding: 10px;
-  border-radius: 10px;
-  width: 45%;
-}
-
-.length-controls {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.length-controls button {
-  width: 28px;
-  height: 28px;
-  font-size: 14px;
-}
-
-.length-controls span {
-  font-size: 20px;
-}
-
-#break-label,
-#session-label {
-  font-size: 14px;
-}
-
-#break-length,
-#session-length {
-  font-size: 24px;
-}
+  updateDisplay();
+});
