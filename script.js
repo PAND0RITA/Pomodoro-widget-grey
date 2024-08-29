@@ -1,90 +1,76 @@
-let timer;
-let isRunning = false;
-let mode = "pomodoro";
-let timeRemaining = 1500; // 25 minutos en segundos
+document.addEventListener('DOMContentLoaded', () => {
+    const timerDisplay = document.querySelector('.timer-display');
+    const startBtn = document.getElementById('startBtn');
+    const resetBtn = document.getElementById('resetBtn');
+    const modeButtons = document.querySelectorAll('.mode-btn');
 
-const startStopButton = document.getElementById("start-stop");
-const resetButton = document.getElementById("reset");
-const minutesDisplay = document.getElementById("minutes");
-const secondsDisplay = document.getElementById("seconds");
-const alarmSound = document.getElementById("alarm-sound");
+    let timer;
+    let timeLeft = 25 * 60; // 25 minutes in seconds
+    let isRunning = false;
 
-const modeButtons = document.querySelectorAll(".mode-button");
-
-modeButtons.forEach(button => {
-    button.addEventListener("click", () => {
-        modeButtons.forEach(btn => btn.classList.remove("active"));
-        button.classList.add("active");
-        mode = button.id;
-
-        switch (mode) {
-            case "pomodoro":
-                timeRemaining = 1500; // 25 minutos
-                break;
-            case "short-break":
-                timeRemaining = 300; // 5 minutos
-                break;
-            case "long-break":
-                timeRemaining = 900; // 15 minutos
-                break;
-        }
-
-        updateDisplay();
-        stopTimer();
-    });
-});
-
-startStopButton.addEventListener("click", () => {
-    if (isRunning) {
-        stopTimer();
-    } else {
-        startTimer();
+    function updateDisplay() {
+        const minutes = Math.floor(timeLeft / 60);
+        const seconds = timeLeft % 60;
+        timerDisplay.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
     }
-});
 
-resetButton.addEventListener("click", resetTimer);
-
-function startTimer() {
-    isRunning = true;
-    startStopButton.textContent = "Stop";
-    timer = setInterval(() => {
-        timeRemaining--;
-        if (timeRemaining <= 0) {
+    function startTimer() {
+        if (!isRunning) {
+            isRunning = true;
+            startBtn.textContent = 'Pause';
+            timer = setInterval(() => {
+                if (timeLeft > 0) {
+                    timeLeft--;
+                    updateDisplay();
+                } else {
+                    clearInterval(timer);
+                    isRunning = false;
+                    startBtn.textContent = 'Start';
+                }
+            }, 1000);
+        } else {
             clearInterval(timer);
-            alarmSound.play();
-            timeRemaining = 0;
             isRunning = false;
-            startStopButton.textContent = "Start";
+            startBtn.textContent = 'Start';
+        }
+    }
+
+    function resetTimer() {
+        clearInterval(timer);
+        isRunning = false;
+        startBtn.textContent = 'Start';
+        timeLeft = 25 * 60;
+        updateDisplay();
+    }
+
+    function setTimerMode(mode) {
+        clearInterval(timer);
+        isRunning = false;
+        startBtn.textContent = 'Start';
+        switch (mode) {
+            case 'pomodoro':
+                timeLeft = 25 * 60;
+                break;
+            case 'shortBreak':
+                timeLeft = 5 * 60;
+                break;
+            case 'longBreak':
+                timeLeft = 15 * 60;
+                break;
         }
         updateDisplay();
-    }, 1000);
-}
-
-function stopTimer() {
-    isRunning = false;
-    clearInterval(timer);
-    startStopButton.textContent = "Start";
-}
-
-function resetTimer() {
-    switch (mode) {
-        case "pomodoro":
-            timeRemaining = 1500; // 25 minutos
-            break;
-        case "short-break":
-            timeRemaining = 300; // 5 minutos
-            break;
-        case "long-break":
-            timeRemaining = 900; // 15 minutos
-            break;
     }
-    stopTimer();
-    updateDisplay();
-}
 
-function updateDisplay() {
-    const minutes = Math.floor(timeRemaining / 60);
-    const seconds = timeRemaining % 60;
-    minutesDisplay.textContent = minutes.toString().padStart(2, "0");
-    secondsDisplay.textContent = seconds.toString().padStart(2, "0");
-}
+    startBtn.addEventListener('click', startTimer);
+    resetBtn.addEventListener('click', resetTimer);
+
+    modeButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            modeButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+            setTimerMode(button.id);
+        });
+    });
+
+    updateDisplay();
+});
