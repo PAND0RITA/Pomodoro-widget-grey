@@ -1,108 +1,90 @@
-document.addEventListener('DOMContentLoaded', () => {
-  let timer;
-  let isRunning = false;
-  let isSession = true;
+let timer;
+let isRunning = false;
+let mode = "pomodoro";
+let timeRemaining = 1500; // 25 minutos en segundos
 
-  const timeLeft = document.getElementById('time-left');
-  const breakLength = document.getElementById('break-length');
-  const sessionLength = document.getElementById('session-length');
-  const timerLabel = document.getElementById('timer-label');
-  const startStopButton = document.getElementById('start-stop');
-  const resetButton = document.getElementById('reset');
+const startStopButton = document.getElementById("start-stop");
+const resetButton = document.getElementById("reset");
+const minutesDisplay = document.getElementById("minutes");
+const secondsDisplay = document.getElementById("seconds");
+const alarmSound = document.getElementById("alarm-sound");
 
-  let breakTime = parseInt(breakLength.textContent) * 60;
-  let sessionTime = parseInt(sessionLength.textContent) * 60;
-  let timeRemaining = sessionTime;
+const modeButtons = document.querySelectorAll(".mode-button");
 
-  function updateDisplay() {
+modeButtons.forEach(button => {
+    button.addEventListener("click", () => {
+        modeButtons.forEach(btn => btn.classList.remove("active"));
+        button.classList.add("active");
+        mode = button.id;
+
+        switch (mode) {
+            case "pomodoro":
+                timeRemaining = 1500; // 25 minutos
+                break;
+            case "short-break":
+                timeRemaining = 300; // 5 minutos
+                break;
+            case "long-break":
+                timeRemaining = 900; // 15 minutos
+                break;
+        }
+
+        updateDisplay();
+        stopTimer();
+    });
+});
+
+startStopButton.addEventListener("click", () => {
+    if (isRunning) {
+        stopTimer();
+    } else {
+        startTimer();
+    }
+});
+
+resetButton.addEventListener("click", resetTimer);
+
+function startTimer() {
+    isRunning = true;
+    startStopButton.textContent = "Stop";
+    timer = setInterval(() => {
+        timeRemaining--;
+        if (timeRemaining <= 0) {
+            clearInterval(timer);
+            alarmSound.play();
+            timeRemaining = 0;
+            isRunning = false;
+            startStopButton.textContent = "Start";
+        }
+        updateDisplay();
+    }, 1000);
+}
+
+function stopTimer() {
+    isRunning = false;
+    clearInterval(timer);
+    startStopButton.textContent = "Start";
+}
+
+function resetTimer() {
+    switch (mode) {
+        case "pomodoro":
+            timeRemaining = 1500; // 25 minutos
+            break;
+        case "short-break":
+            timeRemaining = 300; // 5 minutos
+            break;
+        case "long-break":
+            timeRemaining = 900; // 15 minutos
+            break;
+    }
+    stopTimer();
+    updateDisplay();
+}
+
+function updateDisplay() {
     const minutes = Math.floor(timeRemaining / 60);
     const seconds = timeRemaining % 60;
-    timeLeft.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
-  }
-
-  function startTimer() {
-    timer = setInterval(() => {
-      timeRemaining -= 1;
-      if (timeRemaining < 0) {
-        if (isSession) {
-          timeRemaining = breakTime;
-          timerLabel.textContent = 'Break';
-        } else {
-          timeRemaining = sessionTime;
-          timerLabel.textContent = 'Session';
-        }
-        isSession = !isSession;
-      }
-      updateDisplay();
-    }, 1000);
-  }
-
-  function stopTimer() {
-    clearInterval(timer);
-  }
-
-  function resetTimer() {
-    stopTimer();
-    isSession = true;
-    timerLabel.textContent = 'Session';
-    timeRemaining = sessionTime;
-    updateDisplay();
-    startStopButton.textContent = 'Start';
-    isRunning = false;
-  }
-
-  document.getElementById('break-increment').addEventListener('click', () => {
-    breakTime += 60;
-    breakLength.textContent = breakTime / 60;
-    if (!isSession) {
-      timeRemaining = breakTime;
-      updateDisplay();
-    }
-  });
-
-  document.getElementById('break-decrement').addEventListener('click', () => {
-    if (breakTime > 60) {
-      breakTime -= 60;
-      breakLength.textContent = breakTime / 60;
-      if (!isSession) {
-        timeRemaining = breakTime;
-        updateDisplay();
-      }
-    }
-  });
-
-  document.getElementById('session-increment').addEventListener('click', () => {
-    sessionTime += 60;
-    sessionLength.textContent = sessionTime / 60;
-    if (isSession) {
-      timeRemaining = sessionTime;
-      updateDisplay();
-    }
-  });
-
-  document.getElementById('session-decrement').addEventListener('click', () => {
-    if (sessionTime > 60) {
-      sessionTime -= 60;
-      sessionLength.textContent = sessionTime / 60;
-      if (isSession) {
-        timeRemaining = sessionTime;
-        updateDisplay();
-      }
-    }
-  });
-
-  startStopButton.addEventListener('click', () => {
-    if (isRunning) {
-      stopTimer();
-      startStopButton.textContent = 'Start';
-    } else {
-      startTimer();
-      startStopButton.textContent = 'Stop';
-    }
-    isRunning = !isRunning;
-  });
-
-  resetButton.addEventListener('click', resetTimer);
-
-  updateDisplay();
-});
+    minutesDisplay.textContent = minutes.toString().padStart(2, "0");
+    secondsDisplay.textContent = seconds.toString().padStart(2, "0");
+}
