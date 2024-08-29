@@ -1,12 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400&display=swap'); /* Placeholder for Lyon */
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@600&display=swap');
 
 /* General */
 
 body {
-  font-family: 'Source Sans Pro', sans-serif; /* Replace 'Source Sans Pro' with 'Lyon' if available */
-  background-color: #ffffff; /* White background */
-  margin: 0;
-  padding: 0;
+  font-family: 'Roboto Mono', monospace;
+ // background-color: #c2e6e8;
 }
 
 #root {
@@ -15,51 +13,49 @@ body {
   justify-content: center;
 }
 
-/* Buttons */
-
 button,
 button:active {
-  background-color: rgb(181, 181, 181); /* Gray color */
+  background-color: rgb(181,181,181);
   border: none;
-  width: 32px; /* Smaller size */
-  height: 30px; /* Smaller size */
+  width: 42px;
+  height: 40px;
   border-radius: 100%;
   text-align: center;
-  box-shadow: 0.1em 0.1em rgb(92, 92, 92); /* Dark gray shadow */
-  -webkit-box-shadow: 0.1em 0.1em rgb(92, 92, 92);
-  -moz-box-shadow: 0.1em 0.1em rgb(92, 92, 92);
+  box-shadow: 0.2em 0.2em rgb(92, 92, 92);
+  -webkit-box-shadow: 0.2em 0.2em rgb(92, 92, 92);
+  -moz-box-shadow: 0.2em 0.2em rgb(92, 92, 92);
 }
 
 button:focus {
-  translate: 0.1em 0.1em;
-  box-shadow: 0.1em 0.1em rgb(92, 92, 92) inset;
-  -webkit-box-shadow: 0.1em 0.1em rgb(92, 92, 92) inset;
-  -moz-box-shadow: 0.1em 0.1em rgb(92, 92, 92) inset;
+  translate: 0.2em 0.2em;
+  box-shadow: 0.2em 0.2em rgb(92, 92, 92) inset;
+  -webkit-box-shadow: 0.2em 0.2em rgb(92, 92, 92) inset;
+  -moz-box-shadow: 0.2em 0.2em rgb(92, 92, 92) inset;
 }
 
 /* Clock Body */
 
 .clock-container {
   background-color: rgb(230, 230, 230); 
-  width: 250px; /* Smaller width */
-  border-radius: 15px; /* Rounded corners */
-  padding: 20px; /* Smaller padding */
-  box-shadow: 5px 5px #404040; /* Dark gray shadow */
+  width: 350px;
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 10px 10px #404040;
 }
 
 /* Display + Stop/Start/Reset Controls */
 
 #time-left {
-  font-size: 50px; /* Smaller font size */
+  font-size: 70px;
   text-align: center;
-  background-color: rgb(245, 245, 245); 
-  padding: 15px; /* Smaller padding */
-  border-radius: 15px; /* Rounded corners */
-  box-shadow: 2px 2px rgb(141, 143, 143) inset; /* Inner shadow */
+  background-color: rgb(245,245,245);
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 3px 3px rgb(141, 143, 143) inset;
 }
 
 #display-controls {
-  margin: 5px 0; /* Smaller margin */
+  margin: 10px 0;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -67,27 +63,28 @@ button:focus {
 }
 
 #timer-label {
-  font-size: 20px; /* Smaller font size */
+  font-size: 25px;
   text-align: center;
   padding-top: 2px;
-  background-color: rgb(245, 245, 245);
-  border-radius: 8px; /* Rounded corners */
-  height: 30px; /* Smaller height */
+  background-color: rgb(245,245,245);
+  border-radius: 10px;
+  height: 40px;
   flex: 2;
-  box-shadow: 2px 2px rgb(141, 143, 143) inset; /* Inner shadow */
+  box-shadow: 3px 3px rgb(141, 143, 143) inset;
 }
 
 #timer-ssr {
   flex: 1;
-  margin-left: 20px; /* Smaller margin */
+  margin-left: 30px;
   display: flex;
   justify-content: space-between;
+  flex-start: end;
 }
 
 /* Timer Length Controls */
 
 .length-container {
-  margin-top: 10px; /* Smaller margin */
+  margin-top: 20px;
   display: flex;
   flex-direction: row;
 }
@@ -97,26 +94,25 @@ button:focus {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  width: 120px; /* Smaller width */
-  height: 50px; /* Smaller height */
+  width: 140px;
+  height:60px;
 }
 
 .break-container, 
 .session-container {
   text-align: center;
-  border: 2px solid rgb(189, 189, 189); /* Gray border */
-  padding: 8px; /* Smaller padding */
-  border-radius: 8px; /* Rounded corners */
-  width: 45%; /* Smaller width */
-  background-color: #ffffff; /* White background */
+/*   display: inline-block; */
+  border: 2px solid rgb(189,189,189);
+  padding: 10px;
+  border-radius: 10px;
+  width: 48%;
 }
 
 .timer-length {
-  font-size: 1.5em; /* Smaller font size */
+  font-size: 2em;
 }
 
 .break-container,
 .inc-arrow {
-  margin-right: 10px; /* Smaller margin */
+  margin-right: 12px;
 }
-
