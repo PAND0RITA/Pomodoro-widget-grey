@@ -11,51 +11,50 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 100vh; /* Asegura que el contenedor principal ocupe toda la altura */
 }
 
 button,
 button:active {
   background-color: #b0b0b0; /* Gris medio para los botones */
   border: none;
-  width: 42px;
-  height: 40px;
-  border-radius: 100%;
+  width: 30px; /* Tamaño reducido */
+  height: 30px; /* Tamaño reducido */
+  border-radius: 50%; /* Forma circular */
   text-align: center;
-  box-shadow: 0.2em 0.2em #8c8c8c; /* Gris oscuro para la sombra */
-  -webkit-box-shadow: 0.2em 0.2em #8c8c8c;
-  -moz-box-shadow: 0.2em 0.2em #8c8c8c;
+  box-shadow: 0.1em 0.1em #8c8c8c; /* Gris oscuro para la sombra */
+  -webkit-box-shadow: 0.1em 0.1em #8c8c8c;
+  -moz-box-shadow: 0.1em 0.1em #8c8c8c;
 }
 
 button:focus {
-  translate: 0.2em 0.2em;
-  box-shadow: 0.2em 0.2em #8c8c8c inset;
-  -webkit-box-shadow: 0.2em 0.2em #8c8c8c inset;
-  -moz-box-shadow: 0.2em 0.2em #8c8c8c inset;
+  translate: 0.1em 0.1em;
+  box-shadow: 0.1em 0.1em #8c8c8c inset;
+  -webkit-box-shadow: 0.1em 0.1em #8c8c8c inset;
+  -moz-box-shadow: 0.1em 0.1em #8c8c8c inset;
 }
 
 /* Clock Body */
 
 .clock-container {
-  background-color: #e0e0e0; /* Gris claro para el fondo del reloj */
-  width: 350px;
-  border-radius: 20px;
-  padding: 30px;
-  box-shadow: 10px 10px #b0b0b0; /* Gris medio para la sombra */
+  width: 250px; /* Tamaño reducido */
+  border-radius: 10px; /* Borde redondeado más pequeño */
+  padding: 20px; /* Tamaño reducido del padding */
+  box-shadow: 5px 5px #b0b0b0; /* Gris medio para la sombra */
 }
 
 /* Display + Stop/Start/Reset Controls */
 
 #time-left {
-  font-size: 70px;
+  font-size: 50px; /* Tamaño de fuente reducido */
   text-align: center;
-  background-color: #d0d0d0; /* Gris más claro para el fondo del tiempo */
-  padding: 20px;
-  border-radius: 20px;
-  box-shadow: 3px 3px #b0b0b0 inset; /* Gris medio para la sombra interna */
+  padding: 10px; /* Tamaño reducido del padding */
+  border-radius: 10px; /* Borde redondeado más pequeño */
+  box-shadow: 2px 2px #b0b0b0 inset; /* Gris medio para la sombra interna */
 }
 
 #display-controls {
-  margin: 10px 0;
+  margin: 5px 0; /* Tamaño reducido del margen */
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -63,19 +62,18 @@ button:focus {
 }
 
 #timer-label {
-  font-size: 25px;
+  font-size: 18px; /* Tamaño de fuente reducido */
   text-align: center;
   padding-top: 2px;
-  background-color: #d0d0d0; /* Gris más claro para el fondo del label */
-  border-radius: 10px;
-  height: 40px;
+  border-radius: 5px; /* Borde redondeado más pequeño */
+  height: 30px; /* Tamaño reducido */
   flex: 2;
-  box-shadow: 3px 3px #b0b0b0 inset; /* Gris medio para la sombra interna */
+  box-shadow: 2px 2px #b0b0b0 inset; /* Gris medio para la sombra interna */
 }
 
 #timer-ssr {
   flex: 1;
-  margin-left: 30px;
+  margin-left: 20px; /* Tamaño reducido del margen */
   display: flex;
   justify-content: space-between;
   flex-start: end;
@@ -84,7 +82,7 @@ button:focus {
 /* Timer Length Controls */
 
 .length-container {
-  margin-top: 20px;
+  margin-top: 10px; /* Tamaño reducido del margen */
   display: flex;
   flex-direction: row;
 }
@@ -94,25 +92,24 @@ button:focus {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  width: 140px;
-  height:60px;
+  width: 100px; /* Tamaño reducido */
+  height: 40px; /* Tamaño reducido */
 }
 
 .break-container, 
 .session-container {
   text-align: center;
   border: 2px solid #b0b0b0; /* Gris medio para los bordes */
-  padding: 10px;
-  border-radius: 10px;
-  width: 48%;
-  background-color: #e0e0e0; /* Gris claro para el fondo de los contenedores */
+  padding: 5px; /* Tamaño reducido del padding */
+  border-radius: 5px; /* Borde redondeado más pequeño */
+  width: 45%; /* Tamaño reducido */
 }
 
 .timer-length {
-  font-size: 2em;
+  font-size: 1.5em; /* Tamaño de fuente reducido */
 }
 
 .break-container,
 .inc-arrow {
-  margin-right: 12px;
+  margin-right: 8px; /* Tamaño reducido del margen */
 }
