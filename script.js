@@ -1,76 +1,38 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const timerDisplay = document.querySelector('.timer-display');
-    const startBtn = document.getElementById('startBtn');
-    const resetBtn = document.getElementById('resetBtn');
-    const modeButtons = document.querySelectorAll('.mode-btn');
+let timerElement = document.getElementById("timer");
+let timeLeft = 1500; // 25 minutos en segundos
+let timerInterval;
+let mode = 'pomodoro'; // Modo inicial
 
-    let timer;
-    let timeLeft = 25 * 60; // 25 minutes in seconds
-    let isRunning = false;
+function updateTimer() {
+    let minutes = Math.floor(timeLeft / 60);
+    let seconds = timeLeft % 60;
+    timerElement.textContent = `${minutes < 10 ? '0' : ''}${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+    timeLeft--;
 
-    function updateDisplay() {
-        const minutes = Math.floor(timeLeft / 60);
-        const seconds = timeLeft % 60;
-        timerDisplay.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+    if (timeLeft < 0) {
+        clearInterval(timerInterval);
+        alert("¡Tiempo terminado!");
     }
+}
 
-    function startTimer() {
-        if (!isRunning) {
-            isRunning = true;
-            startBtn.textContent = 'Pause';
-            timer = setInterval(() => {
-                if (timeLeft > 0) {
-                    timeLeft--;
-                    updateDisplay();
-                } else {
-                    clearInterval(timer);
-                    isRunning = false;
-                    startBtn.textContent = 'Start';
-                }
-            }, 1000);
-        } else {
-            clearInterval(timer);
-            isRunning = false;
-            startBtn.textContent = 'Start';
-        }
-    }
+function startTimer() {
+    clearInterval(timerInterval);
+    timerInterval = setInterval(updateTimer, 1000);
+}
 
-    function resetTimer() {
-        clearInterval(timer);
-        isRunning = false;
-        startBtn.textContent = 'Start';
-        timeLeft = 25 * 60;
-        updateDisplay();
-    }
+function resetTimer() {
+    clearInterval(timerInterval);
+    if (mode === 'pomodoro') timeLeft = 1500; // 25 min
+    else if (mode === 'shortBreak') timeLeft = 300; // 5 min
+    else if (mode === 'longBreak') timeLeft = 900; // 15 min
+    updateTimer();
+}
 
-    function setTimerMode(mode) {
-        clearInterval(timer);
-        isRunning = false;
-        startBtn.textContent = 'Start';
-        switch (mode) {
-            case 'pomodoro':
-                timeLeft = 25 * 60;
-                break;
-            case 'shortBreak':
-                timeLeft = 5 * 60;
-                break;
-            case 'longBreak':
-                timeLeft = 15 * 60;
-                break;
-        }
-        updateDisplay();
-    }
-
-    startBtn.addEventListener('click', startTimer);
-    resetBtn.addEventListener('click', resetTimer);
-
-    modeButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            modeButtons.forEach(btn => btn.classList.remove('active'));
-            button.classList.add('active');
-            setTimerMode(button.id);
-        });
+function setMode(newMode) {
+    mode = newMode;
+    resetTimer();
+    document.querySelectorAll('.mode-button').forEach(button => {
+        button.classList.remove('active');
     });
-
-    updateDisplay();
-});
+    document.querySelector(`.mode-button[onclick="setMode('${newMode}')"]`).classList.add('active');
+}
